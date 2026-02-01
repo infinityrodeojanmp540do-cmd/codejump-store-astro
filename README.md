@@ -44,3 +44,21 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+<!-- 初期手順 -->
+
+# codejump-store-astro
+
+## 環境ベース（確定）
+- Framework: Astro
+- Template: Basic
+- Output: static（予定）
+- Node: v22.x
+- Package manager: npm
+
+## 初期構築手順
+1. GitHubで新規リポジトリ作成　ウェブにて
+2. git clone
+3. npm create astro@latest .
+4. npm run dev で起動確認
+5. main に初回コミット（環境ベース固定）
