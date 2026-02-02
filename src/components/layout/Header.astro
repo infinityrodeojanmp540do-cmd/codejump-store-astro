@@ -1,31 +1,33 @@
----
----
-<header id="header" class="wrapper">
-  <h1 class="site-title">
+<header class="l-header">
+  <h1 class="l-header__logo">
     <a href="/">
       <img src="/img/logo.svg" alt="Furniture Design" />
     </a>
   </h1>
 
-  <nav id="navi">
-    <ul class="nav-menu">
-      <li><a href="/products">PRODUCTS</a></li>
-      <li><a href="/about">ABOUT</a></li>
-      <li><a href="/company">COMPANY</a></li>
-      <li>
-        <a href="mailto:xxxxx@xxx.xxx?subject=お問い合わせ">
+  <nav class="l-header__nav">
+    <ul class="l-header__nav-list">
+      <li class="l-header__nav-item">
+        <a class="l-header__nav-link" href="/products">PRODUCTS</a>
+      </li>
+      <li class="l-header__nav-item">
+        <a class="l-header__nav-link" href="/about">ABOUT</a>
+      </li>
+      <li class="l-header__nav-item">
+        <a class="l-header__nav-link" href="/company">COMPANY</a>
+      </li>
+      <li class="l-header__nav-item">
+        <a class="l-header__nav-link" href="mailto:xxxxx@xxx.xxx">
           CONTACT
         </a>
       </li>
     </ul>
   </nav>
 
-  <!-- ハンバーガーボタン -->
-  <button class="toggle_btn" aria-label="メニューを開く">
+  <button class="l-header__toggle" aria-label="メニューを開く">
     <span></span>
     <span></span>
   </button>
 
-  <!-- 背景マスク -->
-  <div id="mask" aria-hidden="true"></div>
+  <div class="l-header__mask" aria-hidden="true"></div>
 </header>
