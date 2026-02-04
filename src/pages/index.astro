@@ -5,30 +5,24 @@ import Footer from "../components/layout/Footer.astro";
 import ProductCard from "../components/ui/ProductCard.astro";
 
 const products = [
-  {
-    image: "/img/item1.jpg",
-    title: "Wood Chair",
-    price: "¥99,000"
-  },
-  {
-    image: "/img/item2.jpg",
-    title: "Modern Lamp",
-    price: "¥45,000"
-  }
+  { image: "/img/item1.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item2.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item3.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item4.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item5.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item6.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item7.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
+  { image: "/img/item8.jpg", title: "プロダクトタイトル", price: "¥99,999 +tax" },
 ];
 ---
 
 <Layout>
   <Header />
 
-  <main>
+  <main class="wrapper">
     <ul class="product-list">
       {products.map((item) => (
-        <ProductCard
-          image={item.image}
-          title={item.title}
-          price={item.price}
-        />
+        <ProductCard image={item.image} title={item.title} price={item.price} />
       ))}
     </ul>
   </main>
