@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+/*
+フッターを画面下に配置するために、
+「position: relative;」を設定
+「min-height」で最小の高さを画面の高さにあわせる
+*/
+body {
+  color: #333;
+  font-size: 0.875rem;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* link */
+a {
+  color: #333;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* image */
+img {
+  max-width: 100%;
+}
+
+/* list */
+li {
+  list-style: none;
+}
+
+/*
+コンテンツ幅を設定するための共通クラス
+*/
+.wrapper {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* main spacing */
+.content {
+  padding-top: 120px;
+  padding-bottom: 160px;
+}
+
+/* site title */
+.site-title a {
+  width: 180px;
+  line-height: 1px;
+  display: block;
+}
+
+/* page title */
+.page-title {
+  font-size: 0.875rem;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
