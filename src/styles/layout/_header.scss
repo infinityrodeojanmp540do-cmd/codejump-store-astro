@@ -12,9 +12,13 @@
   z-index: 10;
 }
 
-/* 中身（wrapper）を flex で整列 */
-.l-header > .wrapper {
+/* wrapper（共通）に “直で” 当てない。header専用ラッパーを噛ませる */
+.l-header__wrapper {
   height: 100%;
+}
+
+.l-header__inner {
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,13 +40,11 @@
   top: 0;
   left: -300px;
   width: 300px;
-  height: 100vh;
   color: #fff;
   padding: 36px 50px;
   transition: all 0.5s;
   z-index: 20;
   opacity: 0;
-  background: #000; /* 元デザインに合わせて黒背景 */
 }
 
 .l-header__nav a {
@@ -110,12 +112,12 @@
   Mask
 ------------------------------------------- */
 
-.l-header__mask {
+.l-header__overlay {
   display: none;
   transition: all 0.5s;
 }
 
-.is-menu-open .l-header__mask {
+.is-menu-open .l-header__overlay {
   display: block;
   position: fixed;
   top: 0;
