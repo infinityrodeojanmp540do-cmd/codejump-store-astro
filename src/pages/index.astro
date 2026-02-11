@@ -1,37 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
-import ProductCard from "../components/ui/ProductCard.astro";
-
-const products = [
-  {
-    image: "/img/item1.jpg",
-    title: "Wood Chair",
-    price: "¥99,000"
-  },
-  {
-    image: "/img/item2.jpg",
-    title: "Modern Lamp",
-    price: "¥45,000"
-  }
-];
 ---
 
 <Layout>
-  <Header />
-
-  <main>
-    <ul class="product-list">
-      {products.map((item) => (
-        <ProductCard
-          image={item.image}
-          title={item.title}
-          price={item.price}
-        />
-      ))}
-    </ul>
+  <main class="wrapper">
+    <h1>Astro Base Template</h1>
   </main>
-
-  <Footer />
 </Layout>
