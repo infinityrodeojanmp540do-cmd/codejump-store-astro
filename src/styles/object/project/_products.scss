@@ -1,0 +1,50 @@
+/* -------------------------------------------
+  Project: Products
+------------------------------------------- */
+
+.p-products {
+  padding-top: 80px;
+  padding-bottom: 160px;
+}
+
+// .p-products__title {
+//   margin-bottom: 30px;
+// }
+
+.p-products__item p {
+ font-size: 0.75rem;
+}
+
+.p-products__list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.p-products__img {
+  margin-bottom: 10px;
+  vertical-align: top; /* 画像下の隙間対策 */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.p-products__text {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.p-products__pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.p-products__page {
+  padding: 0 20px;
+}

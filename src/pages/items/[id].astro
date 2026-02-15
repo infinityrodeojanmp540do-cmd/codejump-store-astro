@@ -1,0 +1,62 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+// ここが必須
+export function getStaticPaths() {
+  // item1〜item16 を作る例（必要な数に合わせて）
+  const items = Array.from({ length: 16 }, (_, i) => String(i + 1));
+
+  return items.map((id) => ({
+    params: { id },
+    props: { id },
+  }));
+}
+
+const { id } = Astro.props;
+
+// 仮データ（本番はJSON/Collectionsへ）
+const item = {
+  title: "プロダクトタイトル",
+  price: "¥99,999 +tax",
+  image: `/img/item${id}.jpg`,
+  description1: `
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+`,
+description2: `
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+テキストテキストテキストテキストテキストテキストテキストテキストテキスト
+`,
+size: "W999 × D999 × H999",
+  color: "テキスト",
+  material: "テキストテキストテキスト",
+};
+---
+
+<Layout title={item.title}>
+  <div class="l-main wrapper">
+    <h1 class="page-title">{item.title}</h1>
+
+    <div class="p-item__body">
+      <div class="p-item__img">
+        <img src={item.image} alt={item.title} />
+      </div>
+
+      <div class="p-item__text">
+          <p class="p-item__description">{item.description1}</p>
+  <p class="p-item__description">{item.description2}</p>
+
+  <p class="p-item__price">{item.price}</p>
+        <dl class="p-item__spec">
+          <dt>SIZE：</dt><dd>{item.size}</dd>
+          <dt>COLOR：</dt><dd>{item.color}</dd>
+          <dt>MATERIAL：</dt><dd>{item.material}</dd>
+        </dl>
+      </div>
+    </div>
+
+    <a class="link-text" href="/products">Back To Products</a>
+  </div>
+</Layout>

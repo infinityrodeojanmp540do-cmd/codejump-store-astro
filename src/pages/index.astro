@@ -1,9 +1,28 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const products = Array.from({ length: 8 }, (_, i) => ({
+  href: `/items/${i + 1}`,
+  image: `/img/item${i + 1}.jpg`,
+  title: "プロダクトタイトルプロダクトタイトル",
+  price: "¥99,999 +tax",
+}));
 ---
 
-<Layout>
-  <main class="wrapper">
-    <h1>Astro Base Template</h1>
-  </main>
+<Layout title="Furniture Design">
+  <div class="p-home__wrapper wrapper">
+    <ul class="p-home__product-list">
+      {products.map((item) => (
+        <li class="p-home__product-item">
+          <a class="p-home__product-link" href={item.href}>
+            <img src={item.image} alt={item.title} />
+            <p>{item.title}</p>
+            <p>{item.price}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a class="p-home__more-link" href="/products">View More</a>
+  </div>
 </Layout>

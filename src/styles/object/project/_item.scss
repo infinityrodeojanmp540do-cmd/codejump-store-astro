@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+/* -------------------------------------------
+  Project: Item
+------------------------------------------- */
+
+.p-item__body {
+  max-width: 800px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 65px;
+}
+
+.p-item__text {
+  width: 42%;
+}
+
+/* テキストの両端を揃える */
+.p-item__text p {
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.p-item__spec {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.p-item__spec dt {
+  width: 30%;
+}
+
+.p-item__spec dd {
+  width: 70%;
+}
+
+.p-item__img {
+  width: 50%;
+}
+
+.link-text {
+    display: block;
+    margin-top: 40px;
+    text-align: center;
+}

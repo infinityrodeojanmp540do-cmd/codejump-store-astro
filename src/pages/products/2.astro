@@ -10,7 +10,7 @@ const allProducts = Array.from({ length: 16 }, (_, i) => ({
   price: "¥99,999 +tax",
 }));
 
-const products = allProducts.slice(0, 12);
+const products = allProducts.slice(12);
 ---
 
 <Layout title="Furniture Design">
@@ -32,8 +32,8 @@ const products = allProducts.slice(0, 12);
       </ul>
 
       <ul class="p-products__pagination">
-        <li class="p-products__page is-current">1</li>
-        <li class="p-products__page"><a href="/products/2">2</a></li>
+        <li class="p-products__page"><a href="/products">1</a></li>
+        <li class="p-products__page is-current">2</li>
       </ul>
     </div>
   </main>
