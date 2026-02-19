@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import productsData from "../../data/products.json";
+
+export async function getStaticPaths() {
+  return productsData.map((product) => ({
+    params: { id: String(product.id) },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+const formatPrice = (price) =>
+  `¥${new Intl.NumberFormat("ja-JP").format(price)} +tax`;
+---
+
+<Layout title={product.title}>
+  <div class="l-main wrapper">
+    <h1 class="page-title">{product.title}</h1>
+
+    <div class="p-item__body">
+      <div class="p-item__img">
+        <img src={product.image} alt={product.title} />
+      </div>
+
+      <div class="p-item__text">
+        {product.description1 && (
+          <p class="p-item__description">{product.description1}</p>
+        )}
+        {product.description2 && (
+          <p class="p-item__description">{product.description2}</p>
+        )}
+
+        <p class="p-item__price">{formatPrice(product.price)}</p>
+
+        <dl class="p-item__spec">
+          <dt>SIZE：</dt><dd>{product.size}</dd>
+          <dt>COLOR：</dt><dd>{product.color}</dd>
+          <dt>MATERIAL：</dt><dd>{product.material}</dd>
+        </dl>
+      </div>
+    </div>
+
+    <a class="link-text" href="/products">Back To Products</a>
+  </div>
+</Layout>

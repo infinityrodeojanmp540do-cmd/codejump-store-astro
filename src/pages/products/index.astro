@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import productsData from "../../data/products.json";
+
+const PER_PAGE = 12;
+const currentPage = 1;
+const totalPages = Math.ceil(productsData.length / PER_PAGE);
+
+const products = productsData.slice(0, PER_PAGE);
+
+const formatPrice = (price) =>
+  `¥${new Intl.NumberFormat("ja-JP").format(price)} +tax`;
+---
+
+<Layout title="Furniture Design">
+  <main class="l-main">
+    <div class="p-products__wrapper wrapper">
+      <h1 class="p-products__title page-title">Products</h1>
+
+      <ul class="p-products__list">
+        {products.map((item) => (
+          <li class="p-products__item">
+            <a class="p-products__link" href={`/items/${item.id}`}>
+              <img class="p-products__img" src={item.image} alt={item.title} />
+              <p class="p-products__name">{item.title}</p>
+              <p class="p-products__price">{formatPrice(item.price)}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <ul class="p-products__pagination">
+        <li class="p-products__page is-current">1</li>
+        {Array.from({ length: totalPages - 1 }, (_, i) => (
+          <li class="p-products__page">
+            <a href={`/products/${i + 2}`}>{i + 2}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </main>
+</Layout>

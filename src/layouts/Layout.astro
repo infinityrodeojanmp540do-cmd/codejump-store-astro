@@ -1,5 +1,8 @@
 ---
 import "../styles/style.scss";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+
 const { title = "Furniture Design" } = Astro.props;
 ---
 
@@ -10,10 +13,18 @@ const { title = "Furniture Design" } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <link rel="icon" href="public/img/favicon.ico" type="image/svg+xml" />
+
+    <link rel="icon" href="/img/favicon.ico" />
   </head>
+
   <body>
-    <slot />
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
 
     <script type="module" src="/src/scripts/header-menu.js"></script>
   </body>
