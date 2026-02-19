@@ -2,11 +2,23 @@
 import Layout from "../../layouts/Layout.astro";
 import productsData from "../../data/products.json";
 
+export async function getStaticPaths() {
+  const PER_PAGE = 12;
+  const totalPages = Math.ceil(productsData.length / PER_PAGE);
+
+  // /products は index.astro が担当、ここは /products/2 以降だけ
+  return Array.from({ length: Math.max(totalPages - 1, 0) }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
 const PER_PAGE = 12;
-const currentPage = 1;
+const currentPage = Number(Astro.params.page);
 const totalPages = Math.ceil(productsData.length / PER_PAGE);
 
-const products = productsData.slice(0, PER_PAGE);
+const start = (currentPage - 1) * PER_PAGE;
+const end = currentPage * PER_PAGE;
+const products = productsData.slice(start, end);
 
 const formatPrice = (price) =>
   `¥${new Intl.NumberFormat("ja-JP").format(price)} +tax`;
@@ -30,12 +42,17 @@ const formatPrice = (price) =>
       </ul>
 
       <ul class="p-products__pagination">
-        <li class="p-products__page is-current">1</li>
-        {Array.from({ length: totalPages - 1 }, (_, i) => (
-          <li class="p-products__page">
-            <a href={`/products/${i + 2}`}>{i + 2}</a>
-          </li>
-        ))}
+        <li class="p-products__page"><a href="/products">1</a></li>
+
+        {Array.from({ length: totalPages - 1 }, (_, i) => {
+          const page = i + 2;
+          const isCurrent = page === currentPage;
+          return (
+            <li class={`p-products__page${isCurrent ? " is-current" : ""}`}>
+              {isCurrent ? page : <a href={`/products/${page}`}>{page}</a>}
+            </li>
+          );
+        })}
       </ul>
     </div>
   </main>

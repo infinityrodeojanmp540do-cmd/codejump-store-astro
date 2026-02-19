@@ -1,12 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import productsData from "../data/products.json";
 
-const products = Array.from({ length: 8 }, (_, i) => ({
-  href: `/items/${i + 1}`,
-  image: `/img/item${i + 1}.jpg`,
-  title: "プロダクトタイトルプロダクトタイトル",
-  price: "¥99,999 +tax",
-}));
+const PICKUP_COUNT = 8;
+const products = productsData.slice(0, PICKUP_COUNT);
+
+const formatPrice = (price) =>
+  `¥${new Intl.NumberFormat("ja-JP").format(price)} +tax`;
 ---
 
 <Layout title="Furniture Design">
@@ -14,10 +14,10 @@ const products = Array.from({ length: 8 }, (_, i) => ({
     <ul class="p-home__product-list">
       {products.map((item) => (
         <li class="p-home__product-item">
-          <a class="p-home__product-link" href={item.href}>
+          <a class="p-home__product-link" href={`/items/${item.id}`}>
             <img src={item.image} alt={item.title} />
             <p>{item.title}</p>
-            <p>{item.price}</p>
+            <p>{formatPrice(item.price)}</p>
           </a>
         </li>
       ))}

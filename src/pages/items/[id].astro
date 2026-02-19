@@ -1,58 +1,43 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import productsData from "../../data/products.json";
 
-// ここが必須
-export function getStaticPaths() {
-  // item1〜item16 を作る例（必要な数に合わせて）
-  const items = Array.from({ length: 16 }, (_, i) => String(i + 1));
-
-  return items.map((id) => ({
-    params: { id },
-    props: { id },
+export async function getStaticPaths() {
+  return productsData.map((product) => ({
+    params: { id: String(product.id) },
+    props: { product },
   }));
 }
 
-const { id } = Astro.props;
+const { product } = Astro.props;
 
-// 仮データ（本番はJSON/Collectionsへ）
-const item = {
-  title: "プロダクトタイトル",
-  price: "¥99,999 +tax",
-  image: `/img/item${id}.jpg`,
-  description1: `
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-`,
-description2: `
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-テキストテキストテキストテキストテキストテキストテキストテキストテキスト
-`,
-size: "W999 × D999 × H999",
-  color: "テキスト",
-  material: "テキストテキストテキスト",
-};
+const formatPrice = (price) =>
+  `¥${new Intl.NumberFormat("ja-JP").format(price)} +tax`;
 ---
 
-<Layout title={item.title}>
+<Layout title={product.title}>
   <div class="l-main wrapper">
-    <h1 class="page-title">{item.title}</h1>
+    <h1 class="page-title">{product.title}</h1>
 
     <div class="p-item__body">
       <div class="p-item__img">
-        <img src={item.image} alt={item.title} />
+        <img src={product.image} alt={product.title} />
       </div>
 
       <div class="p-item__text">
-          <p class="p-item__description">{item.description1}</p>
-  <p class="p-item__description">{item.description2}</p>
+        {product.description1 && (
+          <p class="p-item__description">{product.description1}</p>
+        )}
+        {product.description2 && (
+          <p class="p-item__description">{product.description2}</p>
+        )}
 
-  <p class="p-item__price">{item.price}</p>
+        <p class="p-item__price">{formatPrice(product.price)}</p>
+
         <dl class="p-item__spec">
-          <dt>SIZE：</dt><dd>{item.size}</dd>
-          <dt>COLOR：</dt><dd>{item.color}</dd>
-          <dt>MATERIAL：</dt><dd>{item.material}</dd>
+          <dt>SIZE：</dt><dd>{product.size}</dd>
+          <dt>COLOR：</dt><dd>{product.color}</dd>
+          <dt>MATERIAL：</dt><dd>{product.material}</dd>
         </dl>
       </div>
     </div>
